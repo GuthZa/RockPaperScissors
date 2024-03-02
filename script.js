@@ -10,31 +10,33 @@ function getComputerChoice() {
 function round(playerSelection, computerSelection) {
   switch (playerSelection) {
     case "Rock":
+    case "rock":
+    case "ROCK":
       return computerSelection === "Paper"
-        ? "You lost! Paper beats Rock"
+        ? "You lost! Paper beats Rock!"
         : computerSelection === "Scissors"
-        ? "You Win! Rock beats Scissors"
+        ? "You Win! Rock beats Scissors!"
         : "Tie! Both choose Rock";
 
     case "Paper":
+    case "paper":
+    case "PAPER":
       return computerSelection === "Scissors"
-        ? "You lost! Scissors beats Paper"
+        ? "You lost! Scissors beats Paper!"
         : computerSelection === "Rock"
-        ? "You Win! Paper beats Rock"
+        ? "You Win! Paper beats Rock!"
         : "Tie! Both choose Paper";
 
     case "Scissor":
+    case "scissor":
+    case "SCISSOR":
       return computerSelection === "Rock"
-        ? "You lost! Rock beats Scissor"
+        ? "You lost! Rock beats Scissor!"
         : computerSelection === "Paper"
-        ? "You Win! Scissors beats Paper"
+        ? "You Win! Scissors beats Paper!"
         : "Tie! Both choose Scissor";
   }
 }
 
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
+let userChoice = prompt("Rock, Paper or Scissor?");
+console.log(round(userChoice, getComputerChoice()));
