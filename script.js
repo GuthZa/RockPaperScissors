@@ -7,8 +7,10 @@ function getComputerChoice() {
   return choice === 0 ? "Rock" : choice === 1 ? "Paper" : "Scissors";
 }
 
-function round(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   switch (playerSelection) {
+    default:
+      return "Invalid input!";
     case "Rock":
     case "rock":
     case "ROCK":
@@ -38,5 +40,13 @@ function round(playerSelection, computerSelection) {
   }
 }
 
-let userChoice = prompt("Rock, Paper or Scissor?");
-console.log(round(userChoice, getComputerChoice()));
+function playGame() {
+  while (true) {
+    let userSelection = prompt("Rock, Paper or Scissor?");
+    if (userSelection === "exit") return;
+    let computerSelection = getComputerChoice();
+    console.log(playRound(userSelection, computerSelection));
+  }
+}
+
+playGame();
