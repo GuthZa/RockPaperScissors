@@ -1,6 +1,7 @@
 const btnRock = document.querySelector("#Rock");
 const btnScissors = document.querySelector("#Scissors");
 const btnPapper = document.querySelector("#Paper");
+const results = document.querySelector(".results");
 
 function getComputerChoice() {
   //0 for rock, 1 for paper, 2 for scissors
@@ -43,15 +44,15 @@ function playRound(playerSelection, computerSelection) {
 
 btnRock.addEventListener("click", () => {
   let computerSelection = getComputerChoice();
-  console.log(playRound("Rock", computerSelection));
+  results.textContent = playRound("Rock", computerSelection);
 });
 btnScissors.addEventListener("click", () => {
   let computerSelection = getComputerChoice();
-  console.log(playRound("Scissors", computerSelection));
+  results.textContent = playRound("Scissors", computerSelection);
 });
 btnPapper.addEventListener("click", () => {
   let computerSelection = getComputerChoice();
-  console.log(playRound("Paper", computerSelection));
+  results.textContent = playRound("Paper", computerSelection);
 });
 
 // function playGame() {
