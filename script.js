@@ -1,3 +1,7 @@
+const btnRock = document.querySelector("#Rock");
+const btnScissors = document.querySelector("#Scissors");
+const btnPapper = document.querySelector("#Paper");
+
 function getComputerChoice() {
   //0 for rock, 1 for paper, 2 for scissors
   let choice = Math.floor(Math.random() * 3);
@@ -26,24 +30,38 @@ function playRound(playerSelection, computerSelection) {
         ? "You Win! Paper beats Rock!"
         : "Tie! Both choose Paper";
 
-    case "Scissor":
-    case "scissor":
-    case "SCISSOR":
+    case "Scissors":
+    case "scissors":
+    case "SCISSORS":
       return computerSelection === "Rock"
-        ? "You lost! Rock beats Scissor!"
+        ? "You lost! Rock beats Scissors!"
         : computerSelection === "Paper"
         ? "You Win! Scissors beats Paper!"
         : "Tie! Both choose Scissor";
   }
 }
 
-function playGame() {
-  while (true) {
-    let userSelection = prompt("Rock, Paper or Scissor?");
-    if (userSelection === "exit") return;
-    let computerSelection = getComputerChoice();
-    console.log(playRound(userSelection, computerSelection));
-  }
-}
+btnRock.addEventListener("click", () => {
+  let computerSelection = getComputerChoice();
+  console.log(playRound("Rock", computerSelection));
+});
+btnScissors.addEventListener("click", () => {
+  let computerSelection = getComputerChoice();
+  console.log(playRound("Scissors", computerSelection));
+});
+btnPapper.addEventListener("click", () => {
+  let computerSelection = getComputerChoice();
+  console.log(playRound("Paper", computerSelection));
+});
 
-playGame();
+// function playGame() {
+
+//   while (true) {
+//     let userSelection = prompt("Rock, Paper or Scissor?");
+//     if (userSelection === "exit") return;
+//     let computerSelection = getComputerChoice();
+//     console.log(playRound(userSelection, computerSelection));
+//   }
+// }
+
+//playGame();
