@@ -1,6 +1,4 @@
-const btnRock = document.querySelector("#Rock");
-const btnScissors = document.querySelector("#Scissors");
-const btnPapper = document.querySelector("#Paper");
+const playableBtns = document.querySelectorAll("#playingButton");
 const results = document.querySelector(".results");
 const scoreboard = document.querySelector(".scoreboard");
 let playerScore = 0;
@@ -17,8 +15,6 @@ function playRound(playerSelection, computerSelection) {
     default:
       return "Invalid input!";
     case "Rock":
-    case "rock":
-    case "ROCK":
       if (computerSelection === "Paper") {
         computerScore++;
         return "You lost! Paper beats Rock!";
@@ -28,8 +24,6 @@ function playRound(playerSelection, computerSelection) {
       }
       return "Tie! Both choose Rock";
     case "Paper":
-    case "paper":
-    case "PAPER":
       if (computerSelection === "Scissors") {
         computerScore++;
         return "You lost! Scissors beats Paper!";
@@ -39,8 +33,6 @@ function playRound(playerSelection, computerSelection) {
       }
       return "Tie! Both choose Paper";
     case "Scissors":
-    case "scissors":
-    case "SCISSORS":
       if (computerSelection === "Rock") {
         computerScore++;
         return "You lost! Rock beats Scissors!";
@@ -52,26 +44,29 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-btnPapper.addEventListener("click", () => {
-  let a = $(this).attr("id");
-  console.log(a);
+playableBtns.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    let computerSelection = getComputerChoice();
+    let playerSelection = e.target.textContent;
+    console.log(playerSelection);
+    if (
+      playerSelection !== "Rock" &&
+      playerSelection !== "Scissors" &&
+      playerSelection !== "Paper"
+    ) {
+      results.textContent = "Error with choice";
+      return;
+    }
+    results.textContent = playRound(playerSelection, computerSelection);
+    updateScoreboard();
+  });
 });
 
-btnRock.addEventListener("click", () => {
-  let computerSelection = getComputerChoice();
-  results.textContent = playRound("Rock", computerSelection);
-  updateScoreboard();
-});
-btnScissors.addEventListener("click", () => {
-  let computerSelection = getComputerChoice();
-  results.textContent = playRound("Scissors", computerSelection);
-  updateScoreboard();
-});
-btnPapper.addEventListener("click", () => {
-  let computerSelection = getComputerChoice();
-  results.textContent = playRound("Paper", computerSelection);
-  updateScoreboard();
-});
+// btn.addEventListener("click", (e) => {
+//   let computerSelection = getComputerChoice();
+//   results.textContent = playRound(e.target.id, computerSelection);
+//   updateScoreboard();
+// });
 
 function updateScoreboard() {
   scoreboard.textContent = `Player ${playerScore} - ${computerScore} Computer`;
