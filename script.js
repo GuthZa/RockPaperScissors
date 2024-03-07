@@ -1,8 +1,5 @@
 function getComputerChoice() {
-  //Working with integer
-  //returns 0 for rock
-  //returns 1 for paper
-  //returns 2 for scissors
+  //0 for rock, 1 for paper, 2 for scissors
   let choice = Math.floor(Math.random() * 3);
   return choice === 0 ? "Rock" : choice === 1 ? "Paper" : "Scissors";
 }
